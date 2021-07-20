@@ -5,11 +5,28 @@
  * @Description  : 基础
  */
 
+import { WizSystemInfo } from "../types";
 import { exec } from "./sdk";
 
 /**
- * 测试测试
+ * 测试
  */
 export function test(): Promise<String> {
   return exec<String>("test");
+}
+
+/**
+ * 环境变量
+ * @returns 文件系统中的用户目录路径 (本地路径)
+ */
+export function env(): Promise<String> {
+  return exec<String>("env");
+}
+
+/**
+ * 获取系统信息
+ * @returns 获取系统信息
+ */
+export function getSystemInfo(): Promise<WizSystemInfo> {
+  return exec<WizSystemInfo>("getSystemInfo");
 }
