@@ -24,7 +24,15 @@ export const wiz: Wiz = global.WizJsBridge || global.WizJs || global.Wiz || {};
 
 export const isAndroid = Boolean(navigator.userAgent.match(/android/gi));
 export const isIOS = Boolean(navigator.userAgent.match(/iphone|ipod|ipad/gi));
-export const isInWizApp = typeof wiz.postMessage === "function";
-export const isDebugSDK = wiz.mode === "debug";
+export const isInWizApp1 = typeof wiz.postMessage === "function";
+export const isDebugSDK1 = wiz.mode === "debug";
+
+export function isInWizApp(): boolean {
+  return typeof wiz.postMessage === "function";
+}
+
+export function isDebugSDK(): boolean {
+  return wiz.mode === "debug";
+}
 
 export * from "./core/base";
