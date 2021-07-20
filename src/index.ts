@@ -19,6 +19,8 @@ declare interface Wiz {
   [api: string]: any;
 }
 
+export * from "./types";
+
 export const global: any = typeof window === "undefined" ? {} : window;
 export const wiz: Wiz = global.WizJsBridge || global.WizJs || global.Wiz || {};
 

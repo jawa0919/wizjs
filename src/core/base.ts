@@ -11,16 +11,16 @@ import { exec } from "./sdk";
 /**
  * 测试
  */
-export function test(): Promise<String> {
-  return exec<String>("test");
+export function test(): Promise<string> {
+  return exec<string>("test");
 }
 
 /**
  * 环境变量
  * @returns 文件系统中的用户目录路径 (本地路径)
  */
-export function env(): Promise<String> {
-  return exec<String>("env");
+export function env(): Promise<string> {
+  return exec<string>("env");
 }
 
 /**
