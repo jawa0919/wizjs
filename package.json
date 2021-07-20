@@ -1,0 +1,31 @@
+{
+  "name": "wizjs",
+  "version": "1.0.0",
+  "description": "wizjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jawa0919/wizjs.git"
+  },
+  "keywords": [],
+  "author": "wangjia <jawa0919@163.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/jawa0919/wizjs/issues"
+  },
+  "homepage": "https://github.com/jawa0919/wizjs#readme",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@types/node": "^16.3.3",
+    "typescript": "^4.3.5"
+  },
+  "eslintConfig": {},
+  "prettier": {}
+}
