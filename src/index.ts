@@ -31,8 +31,18 @@ export function isInWizApp(): boolean {
   return typeof wiz.postMessage === "function";
 }
 
+export function debugMode(): void {
+  wiz.mode = "debug";
+}
+
 export function isDebugSDK(): boolean {
   return wiz.mode === "debug";
 }
 
 export * from "./core/base";
+export * from "./core/route";
+// export * from "./core/navigate";
+// export * from "./core/share";
+export * from "./core/ui";
+export * from "./core/network";
+export * from "./core/storage";

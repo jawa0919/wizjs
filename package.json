@@ -4,6 +4,7 @@
   "description": "wizjs",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "prepare": "npm run build"

@@ -5,16 +5,12 @@
  * @Description  : 执行函数
  */
 
-import { wiz, isInWizApp, isDebugSDK } from "..";
+import { wiz, isInWizApp, isDebugSDK, Func } from "..";
 
-function exec<T>(
-  api: string,
-  req?: object,
-  ...otherFun: ((args: any) => void)[]
-): Promise<T> {
+function exec<T>(api: string, req?: object, ...f: Func<any>[]): Promise<T> {
   return new Promise<T>((resolve, reject) => {
-    const id = jsCallback<T>(api, resolve, reject, true, ...otherFun);
-    jsPostMessage(api, id, req ?? {}, otherFun.map((r) => r.name) ?? []);
+    const id = jsCallback<T>(api, resolve, reject, true, ...f);
+    jsPostMessage(api, id, req ?? {}, f.map((r) => r.name) ?? []);
   });
 }
 
@@ -22,10 +18,10 @@ let cbIdentity = 0;
 
 function jsCallback<T>(
   api: string,
-  resolve: (args: T) => void,
-  reject: (args: any) => void,
+  resolve: Func<T>,
+  reject: Func<any>,
   once: boolean = true,
-  ...otherFunctionList: ((args: any) => void)[]
+  ...f: Func<any>[]
 ): string {
   if (!isInWizApp()) reject("需要在App中打开");
   const id: string = `_${++cbIdentity}`;
@@ -33,30 +29,30 @@ function jsCallback<T>(
   if (typeof wiz[apiId] === "undefined") wiz[apiId] = {};
   const wizApi: any = wiz[apiId];
   wizApi[`resolve`] = (data: T) => {
-    if (isDebugSDK()) console.log("jsCallback data", data);
+    if (isDebugSDK()) console.log("______jsCallback data", data);
     resolve(data);
     if (once) delete wiz[apiId];
   };
   wizApi[`reject`] = (error: any) => {
-    if (isDebugSDK()) console.log("jsCallback error", error);
+    if (isDebugSDK()) console.log("______jsCallback error", error);
     reject(error);
     if (once) delete wiz[apiId];
   };
-  otherFunctionList.map((fun) => {
-    if (isDebugSDK()) console.log("jsCallback otherFunc", fun.name);
-    wizApi[fun.name] = (res: any) => {
-      if (isDebugSDK()) console.log("jsCallback otherFunc res", res);
-      fun(res);
+  f.map((func) => {
+    if (isDebugSDK()) console.log("______jsCallback otherFunc", func.name);
+    wizApi[func.name] = (res: any) => {
+      if (isDebugSDK()) console.log("______jsCallback otherFunc res", res);
+      func(res);
     };
   });
   return id;
 }
 
 function jsPostMessage(api: string, id: string, req: object, func: string[]) {
-  if (isDebugSDK()) console.log("wiz", wiz);
+  if (isDebugSDK()) console.log("______wizJs", wiz);
   if (!isInWizApp()) return;
   const map = { api, id, req, func };
-  if (isDebugSDK()) console.log("postMessage", map);
+  if (isDebugSDK()) console.log("______postMessage", map);
   wiz.postMessage(JSON.stringify(map));
 }
 

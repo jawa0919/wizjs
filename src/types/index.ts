@@ -45,3 +45,56 @@ export interface WizSystemInfo {
    */
   deviceOrientation: string;
 }
+
+export interface RequestOpting {
+  /**
+   * 开发者服务器接口地址
+   */
+  url: string;
+  /**
+   * 请求方法
+   */
+  method?: string;
+  /**
+   * 设置请求的 header
+   */
+  header?: object;
+  /**
+   * 请求的参数
+   */
+  data?: string | object | ArrayBuffer;
+}
+
+export interface ResponseOpting {
+  /**
+   * 开发者服务器返回的数据
+   */
+  data: string | object | ArrayBuffer;
+  /**
+   * 开发者服务器返回的 HTTP 状态码
+   */
+  statusCode: number;
+  /**
+   * 开发者服务器返回的 HTTP Response Header
+   */
+  header: object;
+}
+
+export type Func<T extends any> = (args: T) => void;
+
+export type ProgressOpting = {
+  /**
+   *上传进度百分比
+   */
+  progress: number;
+  /**
+   *已经上传的数据长度，单位 Bytes
+   */
+  totalBytesWritten: number;
+  /**
+   *预期需要上传的数据总长度，单位 Bytes
+   */
+  totalBytesExpectedToWrite: number;
+};
+
+export type ProgressCallback = Func<ProgressOpting>;
