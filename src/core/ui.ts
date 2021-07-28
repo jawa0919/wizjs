@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/core/ui.ts
  * @Date         : 2021-07-22 11:03:43
- * @Author       : wangjia <jawa0919@163.com>
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 界面
  */
 

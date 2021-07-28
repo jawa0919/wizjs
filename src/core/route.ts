@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/core/route.ts
  * @Date         : 2021-07-21 10:11:51
- * @Author       : wangjia <jawa0919@163.com>
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 路由
  */
 

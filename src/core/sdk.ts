@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/core/sdk.ts
  * @Date         : 2021-07-19 11:44:08
- * @Author       : wangjia <jawa0919@163.com>
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 执行函数
  */
 

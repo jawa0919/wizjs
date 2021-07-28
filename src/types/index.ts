@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/types/index.ts
- * @Date         : 2021-07-19 11:46:32
- * @Author       : wangjia <jawa0919@163.com>
+ * @Date         : 2021-07-20 09:18:33
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 类型声明
  */
 
@@ -98,3 +98,102 @@ export type ProgressOpting = {
 };
 
 export type ProgressCallback = Func<ProgressOpting>;
+
+/**
+ * original原图 compressed压缩图
+ */
+export type MediaSizeType = "original" | "compressed";
+
+/**
+ * album从相册选图 camera使用相机
+ */
+export type MediaSourceType = "album" | "camera";
+
+/**
+ * up默认 down180度旋转 left逆时针旋转90度 right顺时针旋转90度
+ *
+ * up-mirrored同up，但水平翻转 down-mirrored同down，但水平翻转 left-mirrored同left，但垂直翻转 right-mirrored同right，但垂直翻转
+ */
+export type MediaOrientation =
+  | "up"
+  | "down"
+  | "left"
+  | "right"
+  | "up-mirrored"
+  | "down-mirrored"
+  | "left-mirrored"
+  | "right-mirrored";
+export interface MediaImageFile {
+  /**
+   * 本地文件路径
+   */
+  path: string;
+  /**
+   * 本地文件大小，单位 B
+   */
+  size: number;
+  /**
+   * 图片原始宽度，单位px。不考虑旋转。
+   */
+  width: number;
+  /**
+   * 图片原始高度，单位px。不考虑旋转。
+   */
+  height: number;
+  /**
+   * 拍照时设备方向
+   */
+  orientation: MediaOrientation;
+  /**
+   * 图片格式
+   */
+  type: string;
+}
+
+/**
+ * low低 medium中 high高
+ */
+export type MediaQuality = "low" | "medium" | "high";
+
+export interface MediaVideoFile {
+  /**
+   * 画面方向
+   */
+  orientation: MediaOrientation;
+  /**
+   * 视频格式
+   */
+  type: string;
+  /**
+   * 视频长度
+   */
+  duration: number;
+  /**
+   * 本地文件大小，单位 kB
+   */
+  size: number;
+  /**
+   * 图片原始宽度，单位px。
+   */
+  width: number;
+  /**
+   * 图片原始高度，单位px。
+   */
+  height: number;
+  /**
+   * 视频帧率
+   */
+  fps: number;
+  /**
+   * 视频码率，单位 kbps
+   */
+  bitrate: number;
+  /**
+   * 本地文件路径
+   */
+  path: string;
+  /**
+   * 缩略图文件路径
+   */
+  imagePath: string;
+}

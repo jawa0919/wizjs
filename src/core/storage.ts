@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/core/storage.ts
  * @Date         : 2021-07-22 17:01:22
- * @Author       : wangjia <jawa0919@163.com>
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 数据存储
  */
 
@@ -29,7 +29,7 @@ export function getStorage<T>(key: string): Promise<T> {
 }
 
 /**
- * 异步获取当前storage的相关信息
+ * 获取当前storage的相关信息
  */
 export function getStorageInfo<T>(): Promise<T> {
   return exec<T>("getStorageInfo");

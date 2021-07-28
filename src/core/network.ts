@@ -1,7 +1,7 @@
 /*
  * @FilePath     : /wizjs/src/core/network.ts
  * @Date         : 2021-07-22 14:15:52
- * @Author       : wangjia <jawa0919@163.com>
+ * @Author       : jawa0919 <jawa0919@163.com>
  * @Description  : 网络
  */
 
