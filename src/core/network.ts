@@ -7,6 +7,7 @@
 
 import {
   isDebugSDK,
+  isInWizApp,
   ProgressCallback,
   RequestOpting,
   ResponseOpting,
@@ -18,10 +19,25 @@ import { exec } from "./sdk";
  * @param opt 请求参数
  * @returns
  */
-export function request(opt: RequestOpting | string): Promise<ResponseOpting> {
-  if (isDebugSDK()) return _fetch(opt);
+export function request(opt: RequestOpting): Promise<ResponseOpting> {
+  opt.method = opt.method ?? "GET";
+  if (!isInWizApp()) return _fetchRequest(opt);
   let req = _initRequestOpting(opt);
   return exec<ResponseOpting>("request", req);
+}
+
+async function _fetchRequest(opt: RequestOpting): Promise<ResponseOpting> {
+  let response = await fetch(opt.url, {
+    method: opt.method,
+    headers: opt.header,
+    body: opt.data,
+  });
+  let data = await response.json();
+  let statusCode = response.status;
+  let header = {};
+  // TODO 2021-07-28 18:55:11 展平头部
+  response.headers.forEach((v: string, k: string, h: Headers) => {});
+  return { data, statusCode, header };
 }
 
 /**
@@ -70,22 +86,4 @@ function _initRequestOpting(opt: RequestOpting | string): RequestOpting {
   return typeof opt === "string"
     ? { method: "GET", url: opt }
     : { method: "GET", ...opt };
-}
-
-async function _fetch(opt: RequestOpting | string): Promise<ResponseOpting> {
-  let response: Response;
-  if (typeof opt === "string") {
-    response = await fetch(opt);
-  } else {
-    response = await fetch(opt.url, {
-      method: opt.method || "GET",
-      headers: { ...opt.header },
-      body: typeof opt.data === "string" ? opt.data : JSON.stringify(opt.data),
-    });
-  }
-  return {
-    data: await response.json(),
-    statusCode: response.status,
-    header: response.headers,
-  };
 }

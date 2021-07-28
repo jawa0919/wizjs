@@ -52,17 +52,17 @@ export interface RequestOpting {
    */
   url: string;
   /**
-   * 请求方法
+   * 请求方法 默认 GET
    */
-  method?: string;
+  method?: "GET" | "POST";
   /**
-   * 设置请求的 header
+   * 请求的 header
    */
-  header?: object;
+  header?: Record<string, string>;
   /**
    * 请求的参数
    */
-  data?: string | object | ArrayBuffer;
+  data?: string;
 }
 
 export interface ResponseOpting {
