@@ -34,9 +34,10 @@ async function _fetchRequest(opt: RequestOpting): Promise<ResponseOpting> {
   });
   let data = await response.json();
   let statusCode = response.status;
-  let header = {};
-  // TODO 2021-07-28 18:55:11 展平头部
-  response.headers.forEach((v: string, k: string, h: Headers) => {});
+  let header: Record<string, string> = {};
+  response.headers.forEach((v: string, k: string) => {
+    header[k] = v;
+  });
   return { data, statusCode, header };
 }
 

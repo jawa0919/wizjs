@@ -62,7 +62,7 @@ export interface RequestOpting {
   /**
    * 请求的参数
    */
-  data?: string;
+  data?: string | FormData;
 }
 
 export interface ResponseOpting {
@@ -77,7 +77,7 @@ export interface ResponseOpting {
   /**
    * 开发者服务器返回的 HTTP Response Header
    */
-  header: object;
+  header: Record<string, string>;
 }
 
 export type Func<T extends any> = (args: T) => void;
