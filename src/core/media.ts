@@ -83,7 +83,7 @@ export function getVideoInfo(src: string): Promise<MediaVideoFile> {
  */
 export function compressVideo(
   src: string,
-  quality: MediaQuality
+  quality = "medium" as MediaQuality
 ): Promise<MediaVideoFile> {
   return exec<MediaVideoFile>("compressVideo", { src, quality });
 }
