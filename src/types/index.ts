@@ -197,3 +197,26 @@ export interface MediaVideoFile {
    */
   imagePath: string;
 }
+
+export interface LocationInfo {
+  /**
+   * 纬度
+   */
+  latitude: number;
+  /**
+   * 经度
+   */
+  longitude: number;
+  /**
+   * 速度
+   */
+  speed: number;
+  /**
+   * 高度
+   */
+  altitude: number;
+}
+
+export type FileType = "doc" | "docx" | "xls" | "xlsx" | "ppt" | "pptx" | "pdf";
+
+export type DigestAlgorithm = "md5" | "sha1";

@@ -47,3 +47,5 @@ export * from "./core/ui"; // 界面
 export * from "./core/network"; // 网络
 export * from "./core/storage"; // 数据缓存
 export * from "./core/media"; // 媒体
+export * from "./core/location"; // 位置
+export * from "./core/file"; // 文件
