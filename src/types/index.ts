@@ -220,3 +220,42 @@ export interface LocationInfo {
 export type FileType = "doc" | "docx" | "xls" | "xlsx" | "ppt" | "pptx" | "pdf";
 
 export type DigestAlgorithm = "md5" | "sha1";
+
+export interface WizUserInfo {
+  accessToken: string;
+  expiresIn: number;
+  refreshToken: string;
+  tokenType: string;
+  profile: WizProfile;
+}
+export interface WizProfile {
+  givenName: string;
+  sub: string;
+  name: string;
+}
+
+export interface EASCUserInfo {
+  authTime: number;
+  email: string;
+  headImgUrl: string;
+  orgCode: string;
+  orgId: string;
+  orgName: string;
+  orgType: string;
+  permissions: EASCDic[];
+  roles: EASCDic[];
+  trueName: string;
+  userGroups: EASCDic[];
+  userId: string;
+  userName: string;
+}
+
+export interface EASCDic {
+  id?: string;
+  actionValue: number;
+  name: string;
+  orgTypeId: string;
+  parentId: string;
+  path: string;
+  seqNo: number;
+}
