@@ -49,3 +49,12 @@ export function getFileInfo(
 export function unzip(zipFilePath: string, targetPath: string): Promise<void> {
   return exec<void>("unzip", { zipFilePath, targetPath });
 }
+
+/**
+ * 保存文件
+ * @param tempFilePath
+ * @returns
+ */
+export function saveFile(tempFilePath: string): Promise<string> {
+  return exec<string>("saveFile", { tempFilePath });
+}
